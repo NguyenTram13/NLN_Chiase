@@ -1,0 +1,42 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "nln_mxh",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": true,
+    "dialectOptions": {
+      "useUTC": false,
+      "dateStrings": true,
+      "typeCast": true
+    },
+    "timezone": "+07:00"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "useUTC": false,
+      "dateStrings": true,
+      "typeCast": true
+    },
+    "timezone": "+07:00"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "useUTC": false,
+      "dateStrings": true,
+      "typeCast": true
+    },
+    "timezone": "+07:00"
+  }
+}
