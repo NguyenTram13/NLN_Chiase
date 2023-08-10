@@ -356,7 +356,7 @@ const StartedGameBc = ({ socket }) => {
   return (
     <div className="h-screen relative overflow-hidden w-screen bg-[#111]">
       <canvas id="world"></canvas>
-      <div className="absolute xl:w-[90%] p-4 bg-[url('http://localhost:5173/bg_start.jpg')] bg-no-repeat bg-cover xl:h-[90%] bg-white left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl">
+      <div className="absolute xl:w-[90%] p-4 bg-[url('https://lively-lamington-a39686.netlify.app/bg_start.jpg')] bg-no-repeat bg-cover xl:h-[90%] bg-white left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl">
         <div className="h-[80%]">
           <div className="grid grid-cols-12 gap-3 h-full">
             <div className="col-span-2">
@@ -367,7 +367,7 @@ const StartedGameBc = ({ socket }) => {
                   </span>
                   <div className="absolute left-[-12px] top-1/2 -translate-y-1/2">
                     <img
-                      src="http://localhost:5173/dollar.png"
+                      src="https://lively-lamington-a39686.netlify.app/dollar.png"
                       className="w-1/2"
                       alt=""
                     />
@@ -378,7 +378,7 @@ const StartedGameBc = ({ socket }) => {
                     <div className="w-full flex items-center gap-3 p-2 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                       <img
                         className="w-10 h-10"
-                        src="http://localhost:5173/top-up.png"
+                        src="https://lively-lamington-a39686.netlify.app/top-up.png"
                         alt=""
                       />
                       <span className="text-black text-lg font-bold ">
@@ -391,7 +391,7 @@ const StartedGameBc = ({ socket }) => {
                       <div className="w-full flex items-center gap-3 p-2 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                         <img
                           className="w-10 h-10"
-                          src="http://localhost:5173/delete-button.png"
+                          src="https://lively-lamington-a39686.netlify.app/delete-button.png"
                           alt=""
                         />
                         <span className="text-black text-lg font-bold ">
@@ -405,7 +405,7 @@ const StartedGameBc = ({ socket }) => {
                       <div className="w-full flex items-center gap-3 p-2 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                         <img
                           className="w-10 h-10"
-                          src="http://localhost:5173/delete-button.png"
+                          src="https://lively-lamington-a39686.netlify.app/delete-button.png"
                           alt=""
                         />
                         <span className="text-black text-lg font-bold ">
@@ -444,7 +444,7 @@ const StartedGameBc = ({ socket }) => {
                                         src={
                                           info?.avatar
                                             ? info.avatar
-                                            : "http://localhost:5173/undraw_profile.svg"
+                                            : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                                         }
                                         className="rounded-full w-[70px] h-[70px]"
                                         alt=""
@@ -485,7 +485,7 @@ const StartedGameBc = ({ socket }) => {
                                         src={
                                           info?.avatar
                                             ? info.avatar
-                                            : "http://localhost:5173/undraw_profile.svg"
+                                            : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                                         }
                                         className="rounded-full w-[70px] h-[70px]"
                                         alt=""
@@ -519,7 +519,7 @@ const StartedGameBc = ({ socket }) => {
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
-                                src="http://localhost:5173/gourd.png"
+                                src="https://lively-lamington-a39686.netlify.app/gourd.png"
                                 alt=""
                               />
                             </div>
@@ -528,7 +528,7 @@ const StartedGameBc = ({ socket }) => {
                             <div className="rounded-2xl  relative p-3 flex justify-center items-center ">
                               <img
                                 className="absolute  h-[200px] object-cover"
-                                src="http://localhost:5173/box_xingau-removebg-preview.png"
+                                src="https://lively-lamington-a39686.netlify.app/box_xingau-removebg-preview.png"
                                 alt=""
                               />
                             </div>
@@ -540,7 +540,7 @@ const StartedGameBc = ({ socket }) => {
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
-                                src="http://localhost:5173/crab.png"
+                                src="https://lively-lamington-a39686.netlify.app/crab.png"
                                 alt=""
                               />
                             </div>
@@ -552,7 +552,7 @@ const StartedGameBc = ({ socket }) => {
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
-                                src="http://localhost:5173/crayfish.png"
+                                src="https://lively-lamington-a39686.netlify.app/crayfish.png"
                                 alt=""
                               />
                             </div>
@@ -564,7 +564,7 @@ const StartedGameBc = ({ socket }) => {
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
-                                src="http://localhost:5173/fish.png"
+                                src="https://lively-lamington-a39686.netlify.app/fish.png"
                                 alt=""
                               />
                             </div>
@@ -576,7 +576,7 @@ const StartedGameBc = ({ socket }) => {
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
-                                src="http://localhost:5173/reindeer.png"
+                                src="https://lively-lamington-a39686.netlify.app/reindeer.png"
                                 alt=""
                               />
                             </div>
@@ -588,7 +588,7 @@ const StartedGameBc = ({ socket }) => {
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
-                                src="http://localhost:5173/rooster.png"
+                                src="https://lively-lamington-a39686.netlify.app/rooster.png"
                                 alt=""
                               />
                             </div>
@@ -653,7 +653,7 @@ const StartedGameBc = ({ socket }) => {
                     src={
                       user?.avatar
                         ? user?.avatar
-                        : "http://localhost:5173/undraw_profile.svg"
+                        : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                     }
                     alt=""
                   />
@@ -677,7 +677,7 @@ const StartedGameBc = ({ socket }) => {
                 >
                   <img
                     className="w-[100px] flex justify-center items-center h-[100px] rounded-full object-cover"
-                    src="http://localhost:5173/chip_10-removebg-preview.png"
+                    src="https://lively-lamington-a39686.netlify.app/chip_10-removebg-preview.png"
                     alt=""
                   />
                 </span>
@@ -689,7 +689,7 @@ const StartedGameBc = ({ socket }) => {
                 >
                   <img
                     className="w-[100px] flex justify-center items-center h-[100px] rounded-full object-cover"
-                    src="http://localhost:5173/chip_50-removebg-preview.png"
+                    src="https://lively-lamington-a39686.netlify.app/chip_50-removebg-preview.png"
                     alt=""
                   />
                 </span>
@@ -701,7 +701,7 @@ const StartedGameBc = ({ socket }) => {
                 >
                   <img
                     className="w-[100px] flex justify-center items-center h-[100px] rounded-full object-cover"
-                    src="http://localhost:5173/chip_100-removebg-preview.png"
+                    src="https://lively-lamington-a39686.netlify.app/chip_100-removebg-preview.png"
                     alt=""
                   />
                 </span>
@@ -713,7 +713,7 @@ const StartedGameBc = ({ socket }) => {
                 >
                   <img
                     className="w-[100px] flex justify-center items-center h-[100px] rounded-full object-cover"
-                    src="http://localhost:5173/chip_500-removebg-preview.png"
+                    src="https://lively-lamington-a39686.netlify.app/chip_500-removebg-preview.png"
                     alt=""
                   />
                 </span>

@@ -253,7 +253,7 @@ export default function HeaderClient({
                         src={
                           item?.user_data?.avatar
                             ? item?.user_data?.avatar
-                            : "http://localhost:5173/undraw_profile.svg"
+                            : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                         }
                         alt=""
                       />
@@ -384,7 +384,7 @@ export default function HeaderClient({
         <Toolbar>
           <Link to="/home" className="mr-2">
             <img
-              src="http://localhost:5173/logo-HSV.png"
+              src="https://lively-lamington-a39686.netlify.app/logo-HSV.png"
               className="w-[60px] h-[60px] object-cover"
               alt=""
             />
@@ -639,7 +639,7 @@ export default function HeaderClient({
                                   src={
                                     item?.avatar
                                       ? item?.avatar
-                                      : "http://localhost:5173/undraw_profile.svg"
+                                      : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                                   }
                                   alt=""
                                 />
@@ -668,7 +668,7 @@ export default function HeaderClient({
                                 src={
                                   item?.avatar
                                     ? item?.avatar
-                                    : "http://localhost:5173/undraw_profile.svg"
+                                    : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                                 }
                                 alt=""
                               />
@@ -709,7 +709,7 @@ export default function HeaderClient({
                 src={
                   user?.avatar
                     ? user.avatar
-                    : "http://localhost:5173/undraw_profile.svg"
+                    : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                 }
                 alt=""
               />

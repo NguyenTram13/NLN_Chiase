@@ -564,7 +564,7 @@ const WaitingRoomBauCua = ({ socket }) => {
                       <div className="w-full flex items-center gap-3 p-1 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                         <img
                           className="w-12 h-12"
-                          src="http://localhost:5173/fast.png"
+                          src="https://lively-lamington-a39686.netlify.app/fast.png"
                           alt=""
                         />
                         <span className="text-black font-bold text-xl">
@@ -585,7 +585,7 @@ const WaitingRoomBauCua = ({ socket }) => {
                               <div className="w-full flex items-center gap-3 p-1 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                                 <img
                                   className="w-12 h-12"
-                                  src="http://localhost:5173/speed.png"
+                                  src="https://lively-lamington-a39686.netlify.app/speed.png"
                                   alt=""
                                 />
                                 <span className="text-black font-bold text-xl">
@@ -603,7 +603,7 @@ const WaitingRoomBauCua = ({ socket }) => {
                               <div className="w-full flex items-center gap-3 p-1 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                                 <img
                                   className="w-12 h-12"
-                                  src="http://localhost:5173/speed.png"
+                                  src="https://lively-lamington-a39686.netlify.app/speed.png"
                                   alt=""
                                 />
                                 <span className="text-black font-bold text-xl">
@@ -622,7 +622,7 @@ const WaitingRoomBauCua = ({ socket }) => {
                     >
                       <img
                         className="w-12 h-12"
-                        src="http://localhost:5173/fire.png"
+                        src="https://lively-lamington-a39686.netlify.app/fire.png"
                         alt=""
                       />
                       <span className="text-black font-bold text-xl">
@@ -637,7 +637,7 @@ const WaitingRoomBauCua = ({ socket }) => {
                     <div className="w-full flex items-center gap-3 p-1 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                       <img
                         className="w-12 h-12"
-                        src="http://localhost:5173/information.png"
+                        src="https://lively-lamington-a39686.netlify.app/information.png"
                         alt=""
                       />
                       <span className="text-black font-bold text-xl">
@@ -657,7 +657,7 @@ const WaitingRoomBauCua = ({ socket }) => {
                           <div className="w-full flex items-center gap-3 p-1 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                             <img
                               className="w-12 h-12"
-                              src="http://localhost:5173/ad.png"
+                              src="https://lively-lamington-a39686.netlify.app/ad.png"
                               alt=""
                             />
                             <span className="text-black font-bold text-xl">
@@ -673,7 +673,7 @@ const WaitingRoomBauCua = ({ socket }) => {
                           <div className="w-full flex items-center gap-3 p-1 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                             <img
                               className="w-12 h-12"
-                              src="http://localhost:5173/ad.png"
+                              src="https://lively-lamington-a39686.netlify.app/ad.png"
                               alt=""
                             />
                             <span className="text-black font-bold text-xl">
@@ -686,7 +686,7 @@ const WaitingRoomBauCua = ({ socket }) => {
                         <div className="w-full flex items-center gap-3 p-1 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                           <img
                             className="w-12 h-12"
-                            src="http://localhost:5173/delete-button.png"
+                            src="https://lively-lamington-a39686.netlify.app/delete-button.png"
                             alt=""
                           />
                           <span className="text-black font-bold text-xl">
@@ -701,7 +701,7 @@ const WaitingRoomBauCua = ({ socket }) => {
                       <div className="w-full flex items-center gap-3 p-1 px-3 bg-gray-200 cursor-pointer hover:scale-110 transition-all rounded-full">
                         <img
                           className="w-12 h-12"
-                          src="http://localhost:5173/delete-button.png"
+                          src="https://lively-lamington-a39686.netlify.app/delete-button.png"
                           alt=""
                         />
                         <span className="text-black font-bold text-xl">

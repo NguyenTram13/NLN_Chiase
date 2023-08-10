@@ -400,7 +400,7 @@ const PostHome = ({
                       src={
                         user?.avatar
                           ? user.avatar
-                          : "http://localhost:5173/undraw_profile.svg"
+                          : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                       }
                       alt=""
                     />
@@ -413,7 +413,7 @@ const PostHome = ({
                       <span>
                         <img
                           className="w-[15px]"
-                          src="http://localhost:5173/planet-earth.png"
+                          src="https://lively-lamington-a39686.netlify.app/planet-earth.png"
                           alt=""
                         />
                       </span>
@@ -502,7 +502,7 @@ const PostHome = ({
                                         .avatar
                                         ? dataEditPost.post_data_two.user_data
                                             .avatar
-                                        : "http://localhost:5173/undraw_profile.svg"
+                                        : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                                     }
                                     alt=""
                                   />
@@ -602,7 +602,7 @@ const PostHome = ({
                       src={
                         user?.avatar
                           ? user.avatar
-                          : "http://localhost:5173/undraw_profile.svg"
+                          : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                       }
                       alt=""
                     />
@@ -615,7 +615,7 @@ const PostHome = ({
                       <span>
                         <img
                           className="w-[15px]"
-                          src="http://localhost:5173/planet-earth.png"
+                          src="https://lively-lamington-a39686.netlify.app/planet-earth.png"
                           alt=""
                         />
                       </span>
@@ -681,7 +681,7 @@ const PostHome = ({
                                     dataSharePost.post_data_two.user_data.avatar
                                       ? dataSharePost.post_data_two.user_data
                                           .avatar
-                                      : "http://localhost:5173/undraw_profile.svg"
+                                      : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                                   }
                                   alt=""
                                 />
@@ -753,7 +753,7 @@ const PostHome = ({
                                     src={
                                       dataSharePost.user_data.avatar
                                         ? dataSharePost.user_data.avatar
-                                        : "http://localhost:5173/undraw_profile.svg"
+                                        : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                                     }
                                     alt=""
                                   />
@@ -821,7 +821,7 @@ const PostHome = ({
               src={
                 item.user_data.avatar
                   ? item.user_data.avatar
-                  : "http://localhost:5173/undraw_profile.svg"
+                  : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
               }
               alt=""
             />
@@ -953,7 +953,7 @@ const PostHome = ({
                   src={
                     item?.post_data_two?.user_data?.avatar
                       ? item.post_data_two?.user_data?.avatar
-                      : "http://localhost:5173/undraw_profile.svg"
+                      : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                   }
                   alt=""
                 />
@@ -1041,7 +1041,7 @@ const PostHome = ({
           <div className="flex user_like gap-1 items-center hover:underline cursor-pointer relative">
             <span>
               <img
-                src="http://localhost:5173/heart_full.png"
+                src="https://lively-lamington-a39686.netlify.app/heart_full.png"
                 className="w-[25px]"
                 alt=""
               />
@@ -1118,14 +1118,14 @@ const PostHome = ({
             item.like_data.some((item) => item.user_id === user?.id) ? (
               <img
                 key={item.id}
-                src="http://localhost:5173/heart_full.png"
+                src="https://lively-lamington-a39686.netlify.app/heart_full.png"
                 className="w-[20px]"
                 alt=""
               />
             ) : (
               <img
                 key={item.id}
-                src="http://localhost:5173/heart.png"
+                src="https://lively-lamington-a39686.netlify.app/heart.png"
                 className="w-[20px]"
                 alt=""
               />
@@ -1141,7 +1141,7 @@ const PostHome = ({
         >
           <span>
             <img
-              src="http://localhost:5173/comment.png"
+              src="https://lively-lamington-a39686.netlify.app/comment.png"
               className="w-[20px]"
               alt=""
             />
@@ -1154,7 +1154,7 @@ const PostHome = ({
         >
           <span>
             <img
-              src="http://localhost:5173/share.png"
+              src="https://lively-lamington-a39686.netlify.app/share.png"
               className="w-[20px]"
               alt=""
             />
@@ -1172,7 +1172,7 @@ const PostHome = ({
                   src={
                     user?.avatar
                       ? user?.avatar
-                      : "http://localhost:5173/undraw_profile.svg"
+                      : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                   }
                   alt=""
                 />
@@ -1199,7 +1199,7 @@ const PostHome = ({
                 <span className="p-1 absolute xl:right-[7%] right-[12%] top-1/2 cursor-pointer hover:bg-gray-300 rounded-full -translate-y-1/2 transition-all">
                   <img
                     onClick={() => setShowEmoji((showEmoji) => !showEmoji)}
-                    src="http://localhost:5173/smile.png"
+                    src="https://lively-lamington-a39686.netlify.app/smile.png"
                     className="w-[20px] "
                     alt=""
                   />
@@ -1209,7 +1209,7 @@ const PostHome = ({
                   className="p-1 absolute right-[2%] top-1/2 cursor-pointer hover:bg-gray-300 rounded-full -translate-y-1/2 transition-all"
                 >
                   <img
-                    src="http://localhost:5173/camera.png"
+                    src="https://lively-lamington-a39686.netlify.app/camera.png"
                     className="w-[20px] "
                     alt=""
                   />

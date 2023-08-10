@@ -215,7 +215,7 @@ const CommentPost = ({
                     src={
                       user?.avatar
                         ? user?.avatar
-                        : "http://localhost:5173/undraw_profile.svg"
+                        : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                     }
                     alt=""
                   />
@@ -244,7 +244,7 @@ const CommentPost = ({
                   <span className="p-1 absolute lg:right-[2%] right-[5%] top-1/2 cursor-pointer hover:bg-gray-300 rounded-full -translate-y-1/2 transition-all">
                     <img
                       onClick={() => setShowEmoji((showEmoji) => !showEmoji)}
-                      src="http://localhost:5173/smile.png"
+                      src="https://lively-lamington-a39686.netlify.app/smile.png"
                       className="w-[20px] "
                       alt=""
                     />

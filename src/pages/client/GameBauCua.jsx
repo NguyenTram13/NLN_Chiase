@@ -278,7 +278,7 @@ const GameBauCua = ({ socket }) => {
                     src={
                       user?.avatar
                         ? user?.avatar
-                        : "http://localhost:5173/undraw_profile.svg"
+                        : "https://lively-lamington-a39686.netlify.app/undraw_profile.svg"
                     }
                     alt=""
                   />

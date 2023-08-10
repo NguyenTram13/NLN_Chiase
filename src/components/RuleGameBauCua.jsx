@@ -7,7 +7,7 @@ const RuleGameBauCua = ({ setShowRule }) => {
         <div className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 ">
           <img
             onClick={() => setShowRule(false)}
-            src="http://localhost:5173/cancel.png"
+            src="https://lively-lamington-a39686.netlify.app/cancel.png"
             className="w-14 cursor-pointer h-14 hover:scale-110 transition-all"
             alt=""
           />
@@ -34,42 +34,42 @@ const RuleGameBauCua = ({ setShowRule }) => {
                 <span>
                   <img
                     className="w-8 h-8 object-cover"
-                    src="http://localhost:5173/gourd.png"
+                    src="https://lively-lamington-a39686.netlify.app/gourd.png"
                     alt=""
                   />
                 </span>
                 <span>
                   <img
                     className="w-8 h-8 object-cover"
-                    src="http://localhost:5173/crab.png"
+                    src="https://lively-lamington-a39686.netlify.app/crab.png"
                     alt=""
                   />
                 </span>
                 <span>
                   <img
                     className="w-8 h-8 object-cover"
-                    src="http://localhost:5173/crayfish.png"
+                    src="https://lively-lamington-a39686.netlify.app/crayfish.png"
                     alt=""
                   />
                 </span>
                 <span>
                   <img
                     className="w-8 h-8 object-cover"
-                    src="http://localhost:5173/fish.png"
+                    src="https://lively-lamington-a39686.netlify.app/fish.png"
                     alt=""
                   />
                 </span>
                 <span>
                   <img
                     className="w-8 h-8 object-cover"
-                    src="http://localhost:5173/reindeer.png"
+                    src="https://lively-lamington-a39686.netlify.app/reindeer.png"
                     alt=""
                   />
                 </span>
                 <span>
                   <img
                     className="w-8 h-8 object-cover"
-                    src="http://localhost:5173/rooster.png"
+                    src="https://lively-lamington-a39686.netlify.app/rooster.png"
                     alt=""
                   />
                 </span>
