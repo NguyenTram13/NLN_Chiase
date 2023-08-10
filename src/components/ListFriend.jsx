@@ -122,7 +122,7 @@ const ListFriend = ({ id_user, handleRefuseFriend }) => {
                   ></ItemFriend>
                 );
               }
-              if (friend.sender_data.id != id_user) {
+              if (friend.sender_data?.id != id_user) {
                 return (
                   <ItemFriend
                     fetchFriends={fetchFriends}
