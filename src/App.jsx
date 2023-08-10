@@ -88,7 +88,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setSocket(io("http://localhost:8900"));
+    setSocket(io("https://chiase.shoppet.site:8900"));
 
     const FetchUserReload = () => {
       try {
