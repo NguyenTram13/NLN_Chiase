@@ -112,7 +112,7 @@ const ListFriend = ({ id_user, handleRefuseFriend }) => {
         <div className="my-2 grid grid-cols-12 gap-3">
           {friendUser?.length > 0 ? (
             friendUser.map((friend) => {
-              if (friend.recie_data.id != id_user) {
+              if (friend.recie_data?.id != id_user) {
                 return (
                   <ItemFriend
                     handleRefuseFriend={handleRefuseFriend}

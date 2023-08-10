@@ -115,28 +115,28 @@ const ProfilePost = ({ socket, images, setTab, id_user, desc, friendUser }) => {
           <div className="grid grid-cols-12 gap-3">
             {friendUser &&
               friendUser.slice(0, 9).map((friend) => {
-                if (+friend.recie_data.id != +id_user) {
+                if (+friend.recie_data?.id != +id_user) {
                   return (
                     <Link
-                      key={friend.recie_data.id}
-                      to={`/profile/${friend.recie_data.id}`}
+                      key={friend.recie_data?.id}
+                      to={`/profile/${friend.recie_data?.id}`}
                       className="col-span-4"
                     >
                       <p className="m-0">
                         <img
                           className="hover:scale-105 w-full min-w-[120px] min-h-[120px] transition-all rounded-lg border"
                           src={
-                            friend.recie_data.avatar
-                              ? friend.recie_data.avatar
+                            friend.recie_data?.avatar
+                              ? friend.recie_data?.avatar
                               : "../undraw_profile.svg"
                           }
                           alt=""
                         />
                       </p>
                       <p className="font-bold css_dot hover:underline text-sm text-black my-2">
-                        {friend.recie_data.firstName +
+                        {friend.recie_data?.firstName +
                           " " +
-                          friend.recie_data.lastName}
+                          friend.recie_data?.lastName}
                       </p>
                     </Link>
                   );

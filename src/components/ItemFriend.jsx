@@ -6,16 +6,16 @@ const ItemFriend = ({ friend, id_ref, handleRefuseFriend, fetchFriends }) => {
   return (
     <div className="col-span-6">
       <div className="flex justify-between  items-center p-3 rounded border">
-        <Link to={`/profile/${friend.id}`} className="flex items-center gap-5">
+        <Link to={`/profile/${friend?.id}`} className="flex items-center gap-5">
           <p className="m-0 w-[70%]">
             <img
               className="min-w-[120px] max-w-[120px] object-cover min-h-[120px] hover:scale-105 w-full transition-all rounded-lg border"
-              src={friend.avatar ? friend.avatar : "../undraw_profile.svg"}
+              src={friend?.avatar ? friend?.avatar : "../undraw_profile.svg"}
               alt=""
             />
           </p>
           <p className="font-bold css_dot hover:underline text-sm text-black my-2">
-            {friend.firstName + " " + friend.lastName}
+            {friend?.firstName + " " + friend?.lastName}
           </p>
         </Link>
         <div className="p-3 relative cursor-pointer bg-gray-200   focus-within:hover:bg-[red] rounded-full text-gray-700  m-0 text-2xl leading-[30px] w-[30px] h-[30px] flex items-center justify-center">
