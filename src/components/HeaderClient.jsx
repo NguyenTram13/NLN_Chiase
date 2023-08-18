@@ -1,4 +1,6 @@
 import * as React from "react";
+import regeneratorRuntime from "regenerator-runtime";
+
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
