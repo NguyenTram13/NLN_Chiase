@@ -14,14 +14,14 @@ const Messager = ({ socket }) => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   console.log(user);
-  const [curentChat, setCurrentChat] = useState();
+  // const [curentChat, setCurrentChat] = useState();
   const [conversation, setConversation] = useState();
   const [messages, setMesssages] = useState();
   const [friend, setFriend] = useState();
   const [message, setMessage] = useState();
   const srcollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState();
-  const { tokenCallVideo } = useSelector((state) => state.user);
+  const { tokenCallVideo,curentChat } = useSelector((state) => state.user);
 
   // const socket = useRef();
   //socket io
@@ -314,7 +314,7 @@ const Messager = ({ socket }) => {
                 conversation.map((cv) => (
                   <ItemConversationCurrent
                     key={cv.id + uuidv4()}
-                    setCurrentChat={setCurrentChat}
+                    // setCurrentChat={setCurrentChat}
                     conversation={cv}
                     arrivalMessage={arrivalMessage}
                     currentUser={user}

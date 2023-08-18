@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-// import "./StringeeSDK-1.5.10";
 import "./assets/css/sb-admin-2.min.css";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";

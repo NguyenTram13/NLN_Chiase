@@ -3,17 +3,21 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { setCurrentChat } from "../store/reducers/userReducer";
+import { useDispatch } from "react-redux";
 
 const ItemConversationCurrent = ({
   conversation,
   currentUser,
-  setCurrentChat,
+  // setCurrentChat = ()=>{},
   arrivalMessage,
   curentChat,
 }) => {
   console.log(arrivalMessage);
   const [friend, setFriend] = useState();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [hightLight, setHightLight] = useState();
   console.log(
     conversation.message_data[conversation.message_data.length - 1]?.text
@@ -45,10 +49,11 @@ const ItemConversationCurrent = ({
   if (!friend) <div>Loading</div>;
   return (
     <>
-      {friend && (
+      {friend &&  (
+
         <div
           onClick={() => {
-            setCurrentChat(conversation);
+            dispatch(setCurrentChat(conversation));
             setHightLight(false);
           }}
           className={`w-full rounded-lg grid grid-cols-12 gap-3 items-center p-2 hover:bg-gray-200 cursor-pointer transition-all ${
@@ -97,7 +102,8 @@ const ItemConversationCurrent = ({
             {/* )} */}
           </div>
         </div>
-      )}
+      )
+    }
     </>
   );
 };

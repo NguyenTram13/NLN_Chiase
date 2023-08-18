@@ -186,6 +186,7 @@ const userReducer = createSlice({
     friends: null,
     faceioInstance: null,
     coin: 0,
+    curentChat:null
   },
   reducers: {
     setLoopNoti: (state, action) => {
@@ -200,6 +201,14 @@ const userReducer = createSlice({
       //   ...state,
       //   clientCall: action.payload,
       // };
+    },
+    setCurrentChat: (state, action) => {
+      console.log("🚀 ~ file: userReducer.js:206 ~ action:", action)
+      
+      return {
+        ...state,
+        curentChat: action.payload,
+      };
     },
   },
   extraReducers: (builder) => {
@@ -274,6 +283,6 @@ const userReducer = createSlice({
   },
 });
 
-export const { setLoopNoti, setClientCall } = userReducer.actions;
+export const { setLoopNoti, setClientCall,setCurrentChat } = userReducer.actions;
 
 export default userReducer.reducer;
