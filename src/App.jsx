@@ -122,7 +122,7 @@ function App() {
   const faceioScriptLoaded = () => {
     console.log(faceIO);
     if (faceIO && !faceioInstance) {
-      faceioInstance = new faceIO("fioa0d2f");
+      faceioInstance = new faceIO("fioa014e");
       dispatch(setFaceioInstance(faceioInstance));
     }
   };
