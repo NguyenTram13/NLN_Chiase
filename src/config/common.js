@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://chiase.shoppet.site/api";
+axios.defaults.baseURL = "https://chiase.shoppet.fun/api";
 axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
   "access_token"
 )}`;

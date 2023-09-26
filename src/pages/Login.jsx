@@ -69,7 +69,7 @@ const Login = () => {
     }
   };
   const google = () => {
-    window.location.href = "https://chiase.shoppet.site/api/auth/google";
+    window.location.href = "https://chiase.shoppet.fun/api/auth/google";
   };
 
   // khuôn mặt
@@ -300,7 +300,7 @@ const Login = () => {
                           <p
                             onClick={() => {
                               window.location.href =
-                                "https://chiase.shoppet.site/api/auth/facebook";
+                                "https://chiase.shoppet.fun/api/auth/facebook";
                             }}
                             className="flex items-center cursor-pointer justify-center w-full rounded-full bg-blue-500 py-1 text-white"
                           >
@@ -310,7 +310,7 @@ const Login = () => {
                           <p
                             onClick={() => {
                               window.location.href =
-                                "https://chiase.shoppet.site/api/auth/github";
+                                "https://chiase.shoppet.fun/api/auth/github";
                             }}
                             className="flex items-center justify-center cursor-pointer w-full rounded-full bg-black py-1 text-white"
                           >
