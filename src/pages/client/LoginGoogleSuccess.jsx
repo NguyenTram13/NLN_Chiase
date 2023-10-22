@@ -23,11 +23,12 @@ const LoginGoogleSuccess = () => {
           localStorage.setItem("access_token", accessToken);
           // //decode lay thong tin payload
           var decodedPayload = jwt_decode(accessToken).dataValues;
-          console.log(decodedPayload);
+          console.log("🚀 ~ file: LoginGoogleSuccess.jsx:26 ~ fetchUserGg ~ decodedPayload:", decodedPayload)
           await dispatch(setUser(decodedPayload));
           window.location.href = "/home";
         }
       } catch (e) {
+        console.log("🚀 ~ file: LoginGoogleSuccess.jsx:31 ~ fetchUserGg ~ e:", e)
         console.log(e);
       }
     };
