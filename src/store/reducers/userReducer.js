@@ -18,7 +18,7 @@ export const handleFetchNotis = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       let accessToken = localStorage.getItem("access_token") || {};
-      var decodedPayload = jwt_decode(accessToken)?.dataValues || null;
+      var decodedPayload = jwt_decode(accessToken) || null;
       const response = await fetchNotis(decodedPayload);
       // if (response.status == 200) {
       console.log(response);
@@ -38,7 +38,7 @@ export const handleFetchTokenCallVideo = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       let accessToken = localStorage.getItem("access_token") || {};
-      var decodedPayload = jwt_decode(accessToken)?.dataValues || null;
+      var decodedPayload = jwt_decode(accessToken) || null;
       const response = await fetchTokenCallVideo(decodedPayload.id);
       if (response.status == 200) {
         console.log(response);
@@ -77,7 +77,7 @@ export const handleFetchFriends = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       let accessToken = localStorage.getItem("access_token") || {};
-      var decodedPayload = jwt_decode(accessToken)?.dataValues || null;
+      var decodedPayload = jwt_decode(accessToken) || null;
       const response = await fetchFriends(decodedPayload.id);
       if (response.status == 200) {
         console.log(response);
@@ -138,7 +138,7 @@ export const handleFetchRequestFriend = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       let accessToken = localStorage.getItem("access_token") || {};
-      var decodedPayload = jwt_decode(accessToken)?.dataValues || null;
+      var decodedPayload = jwt_decode(accessToken) || null;
       const response = await fetchRequestFriends(decodedPayload.id);
       if (response.status == 200) {
         console.log(response);
@@ -158,7 +158,7 @@ export const handleFetchCoin = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       let accessToken = localStorage.getItem("access_token") || {};
-      var decodedPayload = jwt_decode(accessToken)?.dataValues || null;
+      var decodedPayload = jwt_decode(accessToken) || null;
       const response = await fetchCoin(decodedPayload.id);
       if (response.status == 200) {
         console.log(response);

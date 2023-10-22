@@ -23,7 +23,7 @@ const LayoutAdmin = ({ children, socket }) => {
   const navigate = useNavigate();
   const FetchUserReload = () => {
     let accessToken = localStorage.getItem("access_token") || {};
-    var decodedPayload = jwt_decode(accessToken)?.dataValues || null;
+    var decodedPayload = jwt_decode(accessToken) || null;
     console.log(decodedPayload);
     dispatch(setUser(decodedPayload));
   };

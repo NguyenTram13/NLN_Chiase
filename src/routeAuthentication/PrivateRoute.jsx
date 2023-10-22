@@ -6,7 +6,7 @@ import jwt_decode from "jwt-decode";
 
 const PrivateRoute = ({ children, roles }) => {
   let accessToken = localStorage.getItem("access_token") || {};
-  var user = jwt_decode(accessToken)?.dataValues || null;
+  var user = jwt_decode(accessToken) || null;
   if (!user) {
     Swal.fire({
       icon: "error",

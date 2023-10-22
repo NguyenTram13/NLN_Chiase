@@ -93,7 +93,7 @@ function App() {
     const FetchUserReload = () => {
       try {
         let accessToken = localStorage.getItem("access_token") || {};
-        var decodedPayload = jwt_decode(accessToken)?.dataValues || null;
+        var decodedPayload = jwt_decode(accessToken) || null;
         dispatch(setUser(decodedPayload));
       } catch (e) {
         console.log(e);

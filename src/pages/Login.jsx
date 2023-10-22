@@ -53,7 +53,7 @@ const Login = () => {
         const accessToken = response.data.accessToken;
         localStorage.setItem("access_token", accessToken);
         // //decode lay thong tin payload
-        var decodedPayload = jwt_decode(accessToken).dataValues;
+        var decodedPayload = jwt_decode(accessToken);
         console.log(decodedPayload);
         dispatch(setUser(decodedPayload));
         window.location.href = "/home";
@@ -96,7 +96,7 @@ const Login = () => {
           const accessToken = response.data.accessToken;
           localStorage.setItem("access_token", accessToken);
           // //decode lay thong tin payload
-          var decodedPayload = jwt_decode(accessToken).dataValues;
+          var decodedPayload = jwt_decode(accessToken);
           console.log(decodedPayload);
           dispatch(setUser(decodedPayload));
           window.location.href = "/home";
