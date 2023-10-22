@@ -19,6 +19,7 @@ const LoginGoogleSuccess = () => {
           console.log(response);
           console.log(response);
           const accessToken = response.data.accessToken;
+          console.log("🚀 ~ file: LoginGoogleSuccess.jsx:22 ~ fetchUserGg ~ accessToken:", accessToken)
           localStorage.setItem("access_token", accessToken);
           // //decode lay thong tin payload
           var decodedPayload = jwt_decode(accessToken).dataValues;
