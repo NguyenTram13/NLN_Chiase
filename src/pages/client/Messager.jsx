@@ -10,6 +10,7 @@ import Message from "../../components/Message";
 import LayoutClient from "../../layouts/LayoutClient";
 import Picker from "emoji-picker-react";
 import { v4 as uuidv4 } from "uuid";
+import InputMessage from "../../components/InputMessage";
 const Messager = ({ socket }) => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
@@ -18,7 +19,6 @@ const Messager = ({ socket }) => {
   const [conversation, setConversation] = useState();
   const [messages, setMesssages] = useState();
   const [friend, setFriend] = useState();
-  const [message, setMessage] = useState();
   const srcollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState();
   const { tokenCallVideo,curentChat } = useSelector((state) => state.user);
@@ -42,6 +42,7 @@ const Messager = ({ socket }) => {
     });
   }, []);
   useEffect(() => {
+    console.log("change arrivalMessage and curentChat");
     arrivalMessage &&
       [curentChat?.user_one, curentChat?.user_second]?.includes(
         arrivalMessage.sender
@@ -121,7 +122,7 @@ const Messager = ({ socket }) => {
     }
   }, [curentChat]);
 
-  const createMessage = async (e) => {
+  const createMessage = async (e,message) => {
     e.preventDefault();
     if (!message) return alert("vui lòng nhập kí tự");
     const message_data = {
@@ -150,7 +151,6 @@ const Messager = ({ socket }) => {
         console.log(response);
 
         setMesssages([...messages, response.data]);
-        setMessage("");
       }
     } catch (e) {
       console.log(e);
@@ -165,15 +165,6 @@ const Messager = ({ socket }) => {
     srcollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const [showEmoji, setShowEmoji] = useState(false);
-  const input_value = useRef();
-
-  const onEmojiClick = (event, emojiObject) => {
-    console.log(event);
-    input_value.current.value = message + " " + event.emoji;
-    setMessage((pre) => pre + " " + event.emoji);
-    setShowEmoji(false);
-  };
 
   //video call
   const [joinded, setJoined] = useState(false);
@@ -413,8 +404,8 @@ const Messager = ({ socket }) => {
                     </div>
                   )}
                 </div>
-
-                <div className="h-[10%] p-3">
+                    <InputMessage  createMessage={createMessage} ></InputMessage>
+                {/* <div className="h-[10%] p-3">
                   <form onSubmit={createMessage} action="">
                     <div className="flex gap-3">
                       <input
@@ -452,7 +443,7 @@ const Messager = ({ socket }) => {
                       </button>
                     </div>
                   </form>
-                </div>
+                </div> */}
               </div>
               {showInfoRoom && (
                 <div className="p-3 col-span-4 right-0 top-0 bottom-0 w-[25vw] overflow-y-auto bg-white shadow_noti">
