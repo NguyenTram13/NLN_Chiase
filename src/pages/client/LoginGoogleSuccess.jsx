@@ -22,7 +22,7 @@ const LoginGoogleSuccess = () => {
           console.log("🚀 ~ file: LoginGoogleSuccess.jsx:22 ~ fetchUserGg ~ accessToken:", accessToken)
           localStorage.setItem("access_token", accessToken);
           // //decode lay thong tin payload
-          var decodedPayload = jwt_decode(accessToken).dataValues;
+          var decodedPayload = jwt_decode(accessToken);
           console.log("🚀 ~ file: LoginGoogleSuccess.jsx:26 ~ fetchUserGg ~ decodedPayload:", decodedPayload)
           await dispatch(setUser(decodedPayload));
           window.location.href = "/home";
