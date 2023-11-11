@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CaculateTime } from "../trait/CaculateTime";
+import { logEvent } from "@firebase/analytics";
+import { analytics } from "../firebase/config";
 
 const ContentLeft = ({ user, nofitycations }) => {
   console.log(nofitycations.notys);
@@ -184,6 +186,9 @@ const ContentLeft = ({ user, nofitycations }) => {
           <span>Đăng kí nhận dạng khuôn mặt</span>
         </p>
         <Link
+        onClick={()=>{
+          logEvent(analytics,"mini game")
+        }}
           to="/mini-game"
           className="flex gap-3 no-underline items-center hover:bg-gray-300 px-2 py-3 rounded-lg cursor-pointer"
         >

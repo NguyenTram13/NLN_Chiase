@@ -8,6 +8,8 @@ import { io } from "socket.io-client";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { logEvent } from "@firebase/analytics";
+import { analytics } from "../../firebase/config";
 
 const Home = ({ socket }) => {
   // const socket = useRef();
@@ -34,6 +36,8 @@ const Home = ({ socket }) => {
     });
   }, []);
   useEffect(() => {
+    logEvent(analytics, "Vào home page");
+
     console.log("asdasdasd");
     console.log(JSON.parse(localStorage.getItem("usersOnline")));
     setUserOnline(JSON.parse(localStorage.getItem("usersOnline")));

@@ -32,6 +32,8 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import MicroPhone from "./MicroPhone";
+import { logEvent } from "@firebase/analytics";
+import { analytics } from "../firebase/config";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
 
@@ -475,6 +477,7 @@ export default function HeaderClient({
                               : "";
                             setSearchGlobal(suggest.keyword);
                             setShowSuggest(false);
+                            logEvent(analytics,"search web");
                             navigate(`/search/top/?q=${suggest.keyword}`);
                           }}
                           className="flex h-auto transition-all rounded-lg justify-between cursor-pointer p-2 hover:bg-gray-200 transition-all"

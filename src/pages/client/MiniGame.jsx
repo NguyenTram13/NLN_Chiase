@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import LayoutClient from "../../layouts/LayoutClient";
+import { logEvent } from "@firebase/analytics";
+import { analytics } from "../../firebase/config";
 
 const MiniGame = ({ socket }) => {
+  useEffect(()=>{
+    logEvent(analytics, "Chơi mini game");
+
+  },[]);
   const [tabGame, setTabGame] = useState(1);
   return (
     <LayoutClient socket={socket}>
