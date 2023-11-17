@@ -14,14 +14,20 @@ import Paper from "@mui/material/Paper";
 import moment from "moment-timezone";
 import lodash from "lodash";
 import { ExportExcel } from "../../trait/ExportExcel";
+import Modal from "react-bootstrap/Modal";
 
 const Dashboard = ({ socket }) => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [dataFlexHeader, setDataFlexHeader] = useState();
   const [onlineUser, setOnlineUser] = useState();
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
+  const [detailSession, setDetailSession] = useState();
   const fetchFlexHeaderDashBoard = async () => {
     try {
       setLoading(true);
@@ -119,6 +125,59 @@ const Dashboard = ({ socket }) => {
   return (
     <>
       <LayoutAdmin socket={socket}>
+        <Modal className="w-[80%]" show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Detail Session Login</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="">
+              {detailSession &&
+                detailSession.reverse()?.map((session) => (
+                  <div>
+                    <p className="flex justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-left text-sm">
+                          {session?.device ?? ""}
+                        </span>
+                        {session?.deviceName && (
+                          <p className="flex flex-col">
+                            <span><b>deviceName: </b> {session?.deviceName}</span>
+                            <span><b>IP: </b> {session?.ip}</span>
+
+                            <span><b>osName: </b> {session?.osName}</span>
+                            <span><b>osVersion: </b> {session?.osVersion}</span>
+                            <span>
+                            <b>applicationVersion: </b> {session?.applicationVersion}
+                            </span>
+                            {session?.location &&   <span>
+                            <b>Location: </b> {session?.location}
+                            </span>}
+                          
+                           
+                          </p>
+                        )}
+                      </div>
+                      <span className="font-bold text-right text-sm min-w-[200px]">
+                        {moment(session?.date_login)
+                          .tz("Asia/Bangkok")
+                          .format("DD/MM/YYYY h:mm:ss A")}
+                      </span>
+                    </p>
+                  </div>
+                ))}
+            </div>
+            <div className="my-3">
+              <Modal.Footer className="mt-3">
+                <p
+                  className="px-4 py-2 bg-gray-600 rounded-lg text-white cursor-pointer"
+                  onClick={handleClose}
+                >
+                  Close
+                </p>
+              </Modal.Footer>
+            </div>
+          </Modal.Body>
+        </Modal>
         <div className="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
           <a
@@ -258,7 +317,7 @@ const Dashboard = ({ socket }) => {
                     <TableCell align="left" className="w-[20%]">
                       Info
                     </TableCell>
-                    <TableCell align="right" className="w-[5%]">
+                    <TableCell align="right" className="w-[10%]">
                       Avatar
                     </TableCell>
                     <TableCell className="w-[5%]" align="right">
@@ -270,12 +329,10 @@ const Dashboard = ({ socket }) => {
                     <TableCell className="w-[15%]" align="right">
                       Total time online
                     </TableCell>
-                    <TableCell className="w-[16%]" align="right">
+                    <TableCell className="w-[20%]" align="right">
                       Number of devices logged in
                     </TableCell>
-                    <TableCell align="right">
-                      Device that has been logged in
-                    </TableCell>
+                    <TableCell align="center">Detail</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -328,15 +385,17 @@ const Dashboard = ({ socket }) => {
                           </p>
                         </TableCell>
                         <TableCell align="right">
-                          <img
-                            src={
-                              user.user_data.avatar
-                                ? user.user_data.avatar
-                                : "../undraw_profile.svg"
-                            }
-                            className="rounded-full"
-                            alt=""
-                          />
+                          <p>
+                            <img
+                              src={
+                                user.user_data.avatar
+                                  ? user.user_data.avatar
+                                  : "../undraw_profile.svg"
+                              }
+                              className="rounded-full object-contain max-w-[50px] max-h-[50px]"
+                              alt=""
+                            />
+                          </p>
                         </TableCell>
                         <TableCell align="right">
                           <span className="font-bold text-green-500 text-lg">
@@ -358,13 +417,38 @@ const Dashboard = ({ socket }) => {
                         </TableCell>
                         <TableCell align="center">
                           <span className="text-xl font-bold">
-                            {user.total_login}
+                            {user.total_login} Session Login
                           </span>
                         </TableCell>
                         <TableCell align="right">
-                          {JSON.parse(user.devices).map((device) => (
-                            <p className="my-3">{device.device}</p>
-                          ))}
+                          <span
+                            onClick={() => {
+                              console.log({ devices: user.devices });
+                              setDetailSession(JSON.parse(user.devices));
+                              handleShow();
+                            }}
+                            className="text-right cursor-pointer hover:text-blue-500 flex justify-center"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-6 h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                            </svg>
+                          </span>
                         </TableCell>
                       </TableRow>
                     ))}
