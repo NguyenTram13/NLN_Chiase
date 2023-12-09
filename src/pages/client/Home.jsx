@@ -42,6 +42,32 @@ const Home = ({ socket }) => {
     console.log(JSON.parse(localStorage.getItem("usersOnline")));
     setUserOnline(JSON.parse(localStorage.getItem("usersOnline")));
   }, []);
+
+  useEffect(() => {
+    const scriptElement = document.querySelector(
+      'script[src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7039374965492590"]'
+    );
+    const handleScriptLoaded = () => {
+      try {
+        if (window.adsbygoogle) {
+          console.log("pushing ads");
+          adsbygoogle.push({});
+        } else {
+          scriptElement?.addEventListener("load", handleScriptLoaded());
+          console.log("waiting util ads");
+        }
+      } catch (e) {
+        console.log("🚀 ~ file: Home.jsx:52 ~ handleScriptLoaded ~ e:", e);
+      }
+    };
+    handleScriptLoaded();
+
+    return ()=>{
+      if(scriptElement){
+        scriptElement.removeEventListener("load",handleScriptLoaded);
+      }
+    }
+  }, []);
   return (
     <LayoutClient socket={socket}>
       <div className="lg:px-[80px] grid grid-cols-12 gap-5 py-3 bg-gray-200 h-[91.5vh]">
@@ -63,6 +89,14 @@ const Home = ({ socket }) => {
             <ContentRight userOnlineCurrent={userOnline}></ContentRight>
           )}
         </div>
+        <ins
+          className="adsbygoogle"
+          style={{display: "block"}}
+          data-ad-client="ca-pub-7039374965492590"
+          data-ad-slot="2530158517"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
       </div>
     </LayoutClient>
   );
