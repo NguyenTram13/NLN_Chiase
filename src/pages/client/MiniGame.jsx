@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 import LayoutClient from "../../layouts/LayoutClient";
 import { logEvent } from "@firebase/analytics";
 import { analytics } from "../../firebase/config";
+import { AdvertisingSlot } from "react-advertising";
 
 const MiniGame = ({ socket }) => {
-  useEffect(()=>{
+  useEffect(() => {
     logEvent(analytics, "Chơi mini game");
-
-  },[]);
+  }, []);
   const [tabGame, setTabGame] = useState(1);
+  const [openAds, setOpenAds] = useState(true);
+
   return (
     <LayoutClient socket={socket}>
-      <div className="grid grid-cols-12">
+      <div className="grid relative grid-cols-12">
         <div className="col-span-3">
           <div className="px-2 py-3 bg-white shadow_noti max-h-[91.5vh] h-[91.5vh] overflow-y-auto w-full">
             <div className="flex justify-between items-center border-b pb-2">
@@ -199,6 +201,20 @@ const MiniGame = ({ socket }) => {
             </div>
           </div>
         </div>
+        {openAds && (
+          <div className="absolute bottom-0 bg-white shadow-lg">
+            <span
+              onClick={() => {
+                setOpenAds(false);
+              }}
+              className="text-red-500 cursor-pointer"
+            >
+              X
+            </span>
+            <img src="./ads.jpeg" className="w-[300px] h-[250px]" alt="" />
+            <AdvertisingSlot id="banner-ad" />
+          </div>
+        )}
       </div>
     </LayoutClient>
   );

@@ -26,6 +26,8 @@ import {
   handleFetchTokenCallVideo,
   setFaceioInstance,
 } from "./store/reducers/userReducer";
+import { AdvertisingProvider, AdvertisingSlot } from "react-advertising";
+
 const GameBanCa = lazy(() => import("./pages/client/GameBanCa"));
 const StartedGameBc = lazy(() => import("./pages/client/StartedGameBc"));
 const GameXepHinh = lazy(() => import("./pages/client/GameXepHinh"));
@@ -128,243 +130,248 @@ function App() {
   };
   return (
     <Fragment>
-      <Suspense fallback={<></>}>
-        <Routes>
-          <Route path="/" element={<Login />}></Route>
-          <Route path="/forgot-password" element={<ForgotPassword />}></Route>
-          <Route path="/password/reset" element={<ResetPassword />}></Route>
+        <Suspense fallback={<></>}>
+          <Routes>
+            <Route path="/" element={<Login />}></Route>
+            <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+            <Route path="/password/reset" element={<ResetPassword />}></Route>
 
-          <Route
-            path="/login-google-success/:id"
-            element={<LoginGoogleSuccess />}
-          ></Route>
-          <Route
-            path="/login-facebook-success/:id"
-            element={<LoginGoogleSuccess />}
-          ></Route>
-          <Route
-            path="/login-github-success/:id"
-            element={<LoginGithubSuccess />}
-          ></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          {socket && (
-            <>
-              <Route path="/home" element={<Home socket={socket} />}></Route>
-              <Route
-                path="/messager"
-                element={<Messager socket={socket} />}
-              ></Route>
-              <Route
-                path="/profile/:id"
-                element={<Profile socket={socket} />}
-              ></Route>
-              <Route
-                path="/friends"
-                element={<Friends socket={socket} />}
-              ></Route>
-              <Route
-                path="/search/top"
-                element={<SearchTop socket={socket} />}
-              />
-              <Route path="/mini-game" element={<MiniGame socket={socket} />} />
-              <Route
-                path="/game/play/baucua"
-                element={<GameBauCua socket={socket} />}
-              />
-              <Route
-                path="/game/play/baucua/waiting"
-                element={<WaitingRoomBauCua socket={socket} />}
-              />
-              <Route
-                path="/game/play/baucua/started"
-                element={<StartedGameBc socket={socket} />}
-              />
-              <Route
-                path="/game/play/xephinh/started"
-                element={<GameXepHinh socket={socket} />}
-              />
-              <Route
-                path="/game/play/banca/started"
-                element={<GameBanCa socket={socket} />}
-              />
-            </>
-          )}
+            <Route
+              path="/login-google-success/:id"
+              element={<LoginGoogleSuccess />}
+            ></Route>
+            <Route
+              path="/login-facebook-success/:id"
+              element={<LoginGoogleSuccess />}
+            ></Route>
+            <Route
+              path="/login-github-success/:id"
+              element={<LoginGithubSuccess />}
+            ></Route>
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            {socket && (
+              <>
+                <Route path="/home" element={<Home socket={socket} />}></Route>
+                <Route
+                  path="/messager"
+                  element={<Messager socket={socket} />}
+                ></Route>
+                <Route
+                  path="/profile/:id"
+                  element={<Profile socket={socket} />}
+                ></Route>
+                <Route
+                  path="/friends"
+                  element={<Friends socket={socket} />}
+                ></Route>
+                <Route
+                  path="/search/top"
+                  element={<SearchTop socket={socket} />}
+                />
+                <Route
+                  path="/mini-game"
+                  element={<MiniGame socket={socket} />}
+                />
+                <Route
+                  path="/game/play/baucua"
+                  element={<GameBauCua socket={socket} />}
+                />
+                <Route
+                  path="/game/play/baucua/waiting"
+                  element={<WaitingRoomBauCua socket={socket} />}
+                />
+                <Route
+                  path="/game/play/baucua/started"
+                  element={<StartedGameBc socket={socket} />}
+                />
+                <Route
+                  path="/game/play/xephinh/started"
+                  element={<GameXepHinh socket={socket} />}
+                />
+                <Route
+                  path="/game/play/banca/started"
+                  element={<GameBanCa socket={socket} />}
+                />
+              </>
+            )}
 
-          <Route
-            path="/admin/login"
-            element={
-              // <PrivateRoute roles={[1]}>
-              <LoginAdmin />
-              // </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/groupuser"
-            element={
-              <PrivateRoute roles={[1]}>
-                <ListGroup socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/groupuser/create"
-            element={
-              <PrivateRoute roles={[1]}>
-                <CreateGroup socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/groupuser/:id"
-            element={
-              <PrivateRoute roles={[1]}>
-                <EditGroup socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/user"
-            element={
-              <PrivateRoute roles={[1]}>
-                <Listuser socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/user/trash"
-            element={
-              <PrivateRoute roles={[1]}>
-                <TrashUser socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
+            <Route
+              path="/admin/login"
+              element={
+                // <PrivateRoute roles={[1]}>
+                <LoginAdmin />
+                // </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/groupuser"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <ListGroup socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/groupuser/create"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <CreateGroup socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/groupuser/:id"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <EditGroup socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/user"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <Listuser socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/user/trash"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <TrashUser socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
 
-          <Route
-            path="/admin/user/create"
-            element={
-              <PrivateRoute roles={[1]}>
-                <CreateUser />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/user/:id"
-            element={
-              <PrivateRoute roles={[1]}>
-                <EditUser socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin"
-            element={
-              <PrivateRoute roles={[1]}>
-                <Dashboard socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
+            <Route
+              path="/admin/user/create"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <CreateUser />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/user/:id"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <EditUser socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <Dashboard socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
 
-          <Route
-            path="/admin/dashboard"
-            element={
-              <PrivateRoute roles={[1]}>
-                <Dashboard socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/post"
-            element={
-              <PrivateRoute roles={[1]}>
-                <ListPost socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/option_report"
-            element={
-              <PrivateRoute roles={[1]}>
-                <ListOption socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/option/create"
-            element={
-              <PrivateRoute roles={[1]}>
-                <AddOption socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/option/:id"
-            element={
-              <PrivateRoute roles={[1]}>
-                <EditOption socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/report"
-            element={
-              <PrivateRoute roles={[1]}>
-                <ListReportPost socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/cate-profile"
-            element={
-              <PrivateRoute roles={[1]}>
-                <ListCate socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/cate-profile/create"
-            element={
-              <PrivateRoute roles={[1]}>
-                <AddCate socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/cate-profile/:id"
-            element={
-              <PrivateRoute roles={[1]}>
-                <EditCate socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/option-profile"
-            element={
-              <PrivateRoute roles={[1]}>
-                <ListOptionCate socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/option-profile/create"
-            element={
-              <PrivateRoute roles={[1]}>
-                <AddOptionCate socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-          <Route
-            path="/admin/option-profile/:id"
-            element={
-              <PrivateRoute roles={[1]}>
-                <EditOptionCate socket={socket} />
-              </PrivateRoute>
-            }
-          ></Route>
-        </Routes>
-      </Suspense>
+            <Route
+              path="/admin/dashboard"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <Dashboard socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/post"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <ListPost socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/option_report"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <ListOption socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/option/create"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <AddOption socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/option/:id"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <EditOption socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/report"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <ListReportPost socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/cate-profile"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <ListCate socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/cate-profile/create"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <AddCate socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/cate-profile/:id"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <EditCate socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/option-profile"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <ListOptionCate socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/option-profile/create"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <AddOptionCate socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/admin/option-profile/:id"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <EditOptionCate socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+          </Routes>
+        </Suspense>
 
-      <ToastContainer />
+        <ToastContainer />
+        {/* <AdvertisingSlot id="banner-ad-dd" /> */}
+
     </Fragment>
   );
 }
