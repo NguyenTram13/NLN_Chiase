@@ -19,12 +19,12 @@ const config = {
 };
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <AdvertisingProvider config={config}>
+    {/* <AdvertisingProvider config={config}> */}
       {/* <React.StrictMode> */}
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </AdvertisingProvider>
+    {/* </AdvertisingProvider> */}
 
     {/* </React.StrictMode> */}
   </Provider>

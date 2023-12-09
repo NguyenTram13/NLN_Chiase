@@ -201,20 +201,7 @@ const MiniGame = ({ socket }) => {
             </div>
           </div>
         </div>
-        {openAds && (
-          <div className="absolute bottom-0 bg-white shadow-lg">
-            <span
-              onClick={() => {
-                setOpenAds(false);
-              }}
-              className="text-red-500 cursor-pointer"
-            >
-              X
-            </span>
-            <img src="./ads.jpeg" className="w-[300px] h-[250px]" alt="" />
-            <AdvertisingSlot id="banner-ad" />
-          </div>
-        )}
+        
       </div>
     </LayoutClient>
   );

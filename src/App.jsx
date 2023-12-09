@@ -370,8 +370,6 @@ function App() {
         </Suspense>
 
         <ToastContainer />
-        {/* <AdvertisingSlot id="banner-ad-dd" /> */}
-
     </Fragment>
   );
 }
