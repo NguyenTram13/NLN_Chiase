@@ -878,7 +878,7 @@ const PostHome = ({
             <i className="fa-solid fa-ellipsis"></i>
           </span>
           {optionPost && (
-            <div className="absolute text-lg right-0 xl:w-[30vw] w-[50vw]  p-3 shadow_noti bg-white rounded-lg">
+            <div className="absolute text-lg top-[30px] right-0 xl:w-[30vw] w-[50vw]  p-3 shadow_noti bg-white rounded-lg">
               {user?.id === item.user_id && (
                 <>
                   <p
