@@ -27,6 +27,7 @@ import {
   setFaceioInstance,
 } from "./store/reducers/userReducer";
 import { AdvertisingProvider, AdvertisingSlot } from "react-advertising";
+const ListReq = lazy(() => import("./pages/admin/reqPostUseful/ListReq"));
 
 const GameBanCa = lazy(() => import("./pages/client/GameBanCa"));
 const StartedGameBc = lazy(() => import("./pages/client/StartedGameBc"));
@@ -363,6 +364,14 @@ function App() {
               element={
                 <PrivateRoute roles={[1]}>
                   <EditOptionCate socket={socket} />
+                </PrivateRoute>
+              }
+            ></Route>
+             <Route
+              path="/admin/request-post-useful"
+              element={
+                <PrivateRoute roles={[1]}>
+                  <ListReq socket={socket} />
                 </PrivateRoute>
               }
             ></Route>

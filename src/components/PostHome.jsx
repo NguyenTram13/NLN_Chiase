@@ -318,7 +318,25 @@ const PostHome = ({
     //console.log(arrNew);
     return arrNew;
   };
-
+  const requestUseful = async (type = true) => {
+    try {
+      const response = await axios({
+        method: "PATCH",
+        url: `/auth/post/request-useful/${item.id}?client_check=${type}`,
+      });
+      if (response.status == 200) {
+        toast.success(
+          `Cảm ơn đã đánh giá! Chúng tôi sẻ phản hồi trong thời gian sớm nhất`,
+          {
+            position: "bottom-left",
+            autoClose: 2000,
+          }
+        );
+      }
+    } catch (err) {
+      console.log("🚀 ~ file: PostHome.jsx:325 ~ requestUseful ~ err:", err);
+    }
+  };
   return (
     <div className="shadow_main py-3 bg-white my-3 rounded-xl">
       {showReport && (
@@ -331,6 +349,7 @@ const PostHome = ({
                 onClick={() => {
                   setSharePost(false);
                   setContentShare("");
+                  setShowReport(false);
                 }}
                 className="text-2xl w-[35px] h-[35px] cursor-pointer hover:bg-gray-500 transition-all hover:scale-110 flex items-center justify-center rounded-full bg-gray-400"
               >
@@ -813,7 +832,7 @@ const PostHome = ({
           </div>
         </div>
       )}
-      <div className="flex px-3 justify-between">
+      <div className="flex px-3 justify-between items-start">
         <Link to={`/profile/${item.user_id}`} className="flex gap-3">
           <span className="w-[45px] h-[45px]">
             <img
@@ -842,7 +861,12 @@ const PostHome = ({
             </span>
           </p>
         </Link>
-        <div className="m-0 block relative text-2xl leading-none   font-bold ">
+        <div className="m-0 flex gap-3 items-center relative text-2xl leading-none   font-bold ">
+          {item.useful ==1 && 
+          <span>
+            <img src="./star.png" className="w-[24px] h-[24px]" alt="" />
+          </span>
+          }
           <span
             onClick={() => {
               //console.log(item.id);
@@ -904,14 +928,80 @@ const PostHome = ({
                 </>
               )}
               {user?.id != item.user_id && (
-                <div
-                  onClick={fetchOptions}
-                  className="p-2 rounded-lg hover:bg-gray-300 flex gap-3 items-center cursor-pointer"
-                >
-                  <span>
-                    <i class="fa-regular fa-flag  text-2xl inline-block"></i>
-                  </span>
-                  <span>Báo cáo bài viết</span>
+                <div>
+                  <div
+                    onClick={fetchOptions}
+                    className="p-2 rounded-lg hover:bg-gray-300 flex gap-3 items-center cursor-pointer"
+                  >
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5"
+                        />
+                      </svg>
+                    </span>
+                    <span>Báo cáo bài viết</span>
+                  </div>
+                  <div className="p-2 rounded-lg hover:bg-gray-300 flex gap-3 items-center cursor-pointer">
+                    {item.useful == 0 ? (
+                      item.request_useful &&
+                      JSON.parse(item.request_useful).includes(user.id) ? (
+                        <div
+                          onClick={() => {
+                            requestUseful(false);
+                            setOptionPost(false);
+                          }}
+                          className="flex  gap-3"
+                        >
+                          <span>
+                            <img
+                              className="h-[24px] w-[24px]"
+                              src="./heart_fullfill.png"
+                              alt=""
+                            />
+                          </span>
+                          <span>Bỏ Đánh dấu bài viết bổ ích</span>
+                        </div>
+                      ) : (
+                        <div
+                          onClick={() => {
+                            requestUseful();
+                            setOptionPost(false);
+                          }}
+                          className="flex  gap-3"
+                        >
+                          <span>
+                            <img
+                              className="h-[24px] w-[24px]"
+                              src="./heart.png"
+                              alt=""
+                            />
+                          </span>
+                          <span>Đánh dấu bài viết bổ ích</span>
+                        </div>
+                      )
+                    ) : (
+                      <div className="flex  gap-3">
+                        <span>
+                          <img
+                            className="h-[24px] w-[24px]"
+                            src="./star.png"
+                            alt=""
+                          />
+                        </span>
+                        <span>Bài viết hữu ích</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>

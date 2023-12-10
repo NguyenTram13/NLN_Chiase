@@ -186,13 +186,21 @@ const userReducer = createSlice({
     friends: null,
     faceioInstance: null,
     coin: 0,
-    curentChat:null
+    curentChat:null,
+    countReqPostUseful:0
+
   },
   reducers: {
     setLoopNoti: (state, action) => {
       return {
         ...state,
         loopNoti: state.loopNoti + 1,
+      };
+    },
+    setCountReqPostUseful: (state, action) => {
+      return {
+        ...state,
+        countReqPostUseful: action.payload,
       };
     },
     setClientCall: (state, action) => {
@@ -283,6 +291,6 @@ const userReducer = createSlice({
   },
 });
 
-export const { setLoopNoti, setClientCall,setCurrentChat } = userReducer.actions;
+export const { setLoopNoti, setClientCall,setCurrentChat,setCountReqPostUseful } = userReducer.actions;
 
 export default userReducer.reducer;

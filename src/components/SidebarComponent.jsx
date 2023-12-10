@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 const SidebarComponent = () => {
-  const { notiReportAdmin } = useSelector((state) => state.user);
+  const { notiReportAdmin,countReqPostUseful } = useSelector((state) => state.user);
   console.log("sidebar", notiReportAdmin);
   return (
     <ul
@@ -174,6 +174,30 @@ const SidebarComponent = () => {
           </span>
           <span className="ml-1 text-2xl font-semibold">Intro option</span>
         </NavLink>
+      </li>
+      <li className="nav-item relative">
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-green-500 nav-link flex gap-3 bg-blue-300"
+              : "nav-link flex gap-3"
+          }
+          to="/admin/request-post-useful"
+          data-target="#collapseTwo"
+          aria-expanded="true"
+          aria-controls="collapseTwo"
+        >
+          <span>
+            <i class="fa-regular fa-address-card text-white text-2xl inline-block"></i>
+          </span>
+          <span className="ml-1 text-2xl font-semibold">Request Post Useful</span>
+        
+        </NavLink>
+        {countReqPostUseful > 0 && (
+          <span className="absolute text-white w-[30px] flex items-center justify-center h-[30px] font-bold right-[4px] top-[4px] p-1 rounded-full bg-red-500">
+            {countReqPostUseful}
+          </span>
+        )}
       </li>
     </ul>
   );

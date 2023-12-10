@@ -18,7 +18,7 @@ import { handleFetchNotiReport } from "../store/reducers/userReducer.js";
 
 const LayoutAdmin = ({ children, socket }) => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user,countReqPostUseful } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
   const FetchUserReload = () => {

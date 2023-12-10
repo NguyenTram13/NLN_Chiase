@@ -70,8 +70,8 @@ const Home = ({ socket }) => {
   // }, []);
   return (
     <LayoutClient socket={socket}>
-      <div className="lg:px-[80px] grid grid-cols-12 gap-5 py-3 bg-gray-200 h-[91.5vh]">
-        <div className="lg:col-span-3 lg:block hidden">
+      <div className="lg:px-[80px] grid grid-cols-12 gap-5 py-3 bg-gray-200 h-[91vh] overflow-hidden">
+        <div className="lg:col-span-3 overflow-auto  lg:block hidden">
           {nofitycations && (
             <ContentLeft
               nofitycations={nofitycations}

@@ -37,6 +37,7 @@
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.1",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-paginate": "^8.1.4",
     "react-quill": "^2.0.0",
     "react-redux": "^8.0.5",

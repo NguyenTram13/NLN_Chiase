@@ -11,24 +11,28 @@ import { ToastContainer, toast } from "react-toastify";
 import { handleFetchNotis, setLoopNoti } from "../store/reducers/userReducer";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
-
+import InfiniteScroll from "react-infinite-scroll-component";
 const ListPost = ({ socket, id_user, q = "" }) => {
   const navigate = useNavigate();
   const { isLoadPost, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState();
   const [loadingComment, setLoadingComment] = useState(false);
+  const [page, setPage] = useState(1);
+  const [more, setMore] = useState(true);
+
   const FetchPosts = async () => {
+    console.log("🚀 ~ file: ListPost.jsx:25 ~ FetchPosts ~ page:", page);
     try {
       let response;
       if (id_user) {
         response = await axios({
-          url: `/auth/post/home/?id_user=` + id_user + "&q=" + q,
+          url: `/auth/post/home?id_user=${id_user}&q=${q}&limit=5&page=${page}`,
         });
       } else {
         response = await axios({
-          url: `/auth/post/home` + "/?q=" + q,
+          url: `/auth/post/home?q=${q}&limit=5&page=${page}`,
         });
       }
       console.log(response);
@@ -38,7 +42,16 @@ const ListPost = ({ socket, id_user, q = "" }) => {
           return item;
         });
         console.log(arrnew);
-        setPosts((pre) => [...arrnew]);
+        const post_new_cal = [...posts, ...arrnew];
+        if (post_new_cal.length > 15 || arrnew.length == 0) {
+          setMore(false);
+        }
+        setTimeout(() => {
+          setPosts((posts) => post_new_cal);
+
+          setPage((page) => page + 1);
+        }, 1500);
+
         // setPosts(response.data);
       }
     } catch (e) {
@@ -306,23 +319,44 @@ const ListPost = ({ socket, id_user, q = "" }) => {
     );
 
   return (
-    <div>
-      {posts.length > 0 &&
-        posts.map((post, index) => (
-          <PostHome
-            loadingComment={loadingComment}
-            createLikeComment={createLikeComment}
-            user={user}
-            handleEditPostParent={handleEditPostParent}
-            handleDeltePost={handleDeltePost}
-            createComment={createComment}
-            createLikePost={createLikePost}
-            key={post.id + uuidv4()}
-            item={post}
-            socket={socket}
-            FetchPosts={FetchPosts}
-          ></PostHome>
-        ))}
+    <div id="listpost" className="h-[60vh] overflow-auto">
+      <InfiniteScroll
+        dataLength={posts?.length}
+        hasMore={more}
+        loader={
+          <p style={{ textAlign: "center" }}>
+            <span className="px-3 py-2 bg-blue-400 rounded-full text-white">
+              Loading...
+            </span>
+          </p>
+        }
+        next={FetchPosts}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <span className="px-3 py-2 bg-blue-400 rounded-full text-white">
+              Yay! You have seen it all
+            </span>
+          </p>
+        }
+        scrollableTarget="listpost"
+      >
+        {posts.length > 0 &&
+          posts.map((post, index) => (
+            <PostHome
+              loadingComment={loadingComment}
+              createLikeComment={createLikeComment}
+              user={user}
+              handleEditPostParent={handleEditPostParent}
+              handleDeltePost={handleDeltePost}
+              createComment={createComment}
+              createLikePost={createLikePost}
+              key={post.id + uuidv4()}
+              item={post}
+              socket={socket}
+              FetchPosts={FetchPosts}
+            ></PostHome>
+          ))}
+      </InfiniteScroll>
       {posts.length <= 0 && (
         <div className="p-3 text-red-500 shadow_main bg-white mt-3 rounded-xl">
           Chưa có bài viết
