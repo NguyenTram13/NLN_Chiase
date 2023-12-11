@@ -319,7 +319,7 @@ const ListPost = ({ socket, id_user, q = "" }) => {
     );
 
   return (
-    <div id="listpost" className="h-[60vh] overflow-auto">
+    <div id="listpost" className="h-[100vh] overflow-auto">
       <InfiniteScroll
         dataLength={posts?.length}
         hasMore={more}

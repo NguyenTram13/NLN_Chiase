@@ -10,6 +10,8 @@ import { setUpLoadPost } from "../store/reducers/authReducer";
 import { useDispatch } from "react-redux";
 import Picker from "emoji-picker-react";
 const schema = yup.object({});
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 const Status = ({ user }) => {
   const [isShowStatus, setIsShowStatus] = useState(false);
   const {
@@ -24,6 +26,11 @@ const Status = ({ user }) => {
   const [content, setContent] = useState("");
   const [fileUpload, setFileUpload] = useState("");
   const [subImage, setSubImage] = useState("");
+  const [reqContent, setReqContent] = useState("");
+  const [reqImage, setReqImage] = useState("");
+  const [numberImage, setNumberImage] = useState(1);
+  const [loadingAiGenerate, setLoadingGenerate] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,7 +48,13 @@ const Status = ({ user }) => {
     if (fileUpload.length > 0) {
       fileUpload.forEach((item, index) => {
         console.log(item);
-        formData.append(`urls`, item);
+        if(reqImage && reqContent ){
+          formData.append(`images_ai`, item);
+
+        }else{
+
+          formData.append(`urls`, item);
+        }
       });
     }
     if (subImage.length > 0) {
@@ -169,15 +182,123 @@ const Status = ({ user }) => {
 
   const [showEmoji, setShowEmoji] = useState(false);
   const textarea = useRef();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const onEmojiClick = (event, emojiObject) => {
     console.log(event);
     textarea.current.value = content + " " + event.emoji;
     setContent((pre) => pre + " " + event.emoji);
     setShowEmoji(false);
   };
-  console.log(content);
+
+  const AiGeneratePost = async () => {
+    try {
+      setLoadingGenerate(true)
+      let formData = new FormData();
+      if (reqContent) {
+        formData.append("req_content", reqContent);
+      }
+      if (reqImage) {
+        formData.append("req_image", reqImage);
+      }
+      formData.append("numberImage", +numberImage);
+
+      const res = await axios({
+        method: "POST",
+        url: "/auth/post/ai-generate-post",
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("🚀 ~ file: Status.jsx:218 ~ AiGeneratePost ~ data:", res);
+      if(res.status == 201){
+        const images = res.data.images.map(image => image.url)
+        setContent(res.data.content)
+        setFileUpload(images);
+        setLoadingGenerate(false);
+      }
+    } catch (e) {
+      console.log("🚀 ~ file: Status.jsx:195 ~ AiGeneratePost ~ e:", e);
+    }
+  };
   return (
     <div className="shadow_main xl:h-[21vh] h-[23vh] bg-white rounded-xl p-3">
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={show}
+        onHide={handleClose}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            AI Recomment
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {loadingAiGenerate ? (
+            <div>loading...</div>
+          ) : (
+            <form action="">
+              <div className="flex flex-col gap-5">
+                <div>
+                  <h5>Question content</h5>
+                  <input
+                    className="p-2 border w-full"
+                    type="text"
+                    onChange={(e) => setReqContent(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <h5>Question image</h5>
+                  <input
+                    className="p-2 border w-full"
+                    type="text"
+                    onChange={(e) => setReqImage(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <h5>Number image</h5>
+                  <input
+                    className="p-2 border w-full"
+                    type="number"
+                    defaultValue={1}
+                    min={1}
+                    max={5}
+                    onChange={(e) => setNumberImage(e.target.value)}
+                  />
+                </div>
+              </div>
+            </form>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          {loadingAiGenerate ? (
+            <>
+              <Button disabled onClick={handleClose}>
+                Close
+              </Button>
+              <Button
+                disabled
+                onClick={() => {
+                  setLoadingGenerate(true);
+                }}
+              >
+                Generate
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button onClick={handleClose}>Close</Button>
+              <Button onClick={AiGeneratePost}>Generate</Button>
+            </>
+          )}
+        </Modal.Footer>
+      </Modal>
       {isShowEdit && (
         <div className="popup fixed z-[11] inset-0 bg-[rgba(255,255,255,0.5)] transition-all m-auto flex">
           <div className="py-2 px-3 bg-white shadow_main xl:w-[40vw] w-[90vw] h-[80vh] m-auto">
@@ -276,28 +397,40 @@ const Status = ({ user }) => {
             </div>
             <div className="h-[90%] overflow-y-auto py-2">
               <div className="h-[15%]">
-                <div className="flex gap-3">
-                  <span className="w-[45px] ">
-                    <img
-                      className="rounded-full object-cover"
-                      src={user?.avatar ? user.avatar : "../undraw_profile.svg"}
-                      alt=""
-                    />
-                  </span>
-                  <div>
-                    <p className="font-bold m-0 text-black">
-                      {user.firstName + " " + user.lastName}
-                    </p>
-                    <p className="m-0 font-semibold text-black px-2 flex gap-1 bg-gray-300 rounded-full text-center justify-center items-center">
-                      <span>
-                        <img
-                          className="w-[15px] "
-                          src="../planet-earth.png"
-                          alt=""
-                        />
-                      </span>
-                      <span>Công khai</span>
-                    </p>
+                <div className="flex justify-between gap-3">
+                  <div className="flex gap-3">
+                    <span className="w-[45px] ">
+                      <img
+                        className="rounded-full object-cover"
+                        src={
+                          user?.avatar ? user.avatar : "../undraw_profile.svg"
+                        }
+                        alt=""
+                      />
+                    </span>
+                    <div>
+                      <p className="font-bold m-0 text-black">
+                        {user.firstName + " " + user.lastName}
+                      </p>
+                      <p className="m-0 font-semibold text-black px-2 flex gap-1 bg-gray-300 rounded-full text-center justify-center items-center">
+                        <span>
+                          <img
+                            className="w-[15px] "
+                            src="../planet-earth.png"
+                            alt=""
+                          />
+                        </span>
+                        <span>Công khai</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="">
+                    <span
+                      className="px-3 py-2 bg-slate-400 rounded-md text-white cursor-pointer"
+                      onClick={handleShow}
+                    >
+                      AI Recomment
+                    </span>
                   </div>
                 </div>
               </div>
@@ -314,6 +447,7 @@ const Status = ({ user }) => {
                       ref={textarea}
                       name="content"
                       id=""
+                      value={content}
                       onChange={(e) => setContent(e.target.value)}
                       className="p-3 outline-none w-full resize-none h-[30%] text-black"
                       placeholder="Bạn đang nghĩ gì thế?"
