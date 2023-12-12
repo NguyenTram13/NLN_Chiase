@@ -401,7 +401,7 @@ const Status = ({ user }) => {
                   <div className="flex gap-3">
                     <span className="w-[45px] ">
                       <img
-                        className="rounded-full object-cover"
+                        className="rounded-full object-cover max-w-[40px] max-h-[40px]"
                         src={
                           user?.avatar ? user.avatar : "../undraw_profile.svg"
                         }
@@ -560,7 +560,7 @@ const Status = ({ user }) => {
       <div className="flex gap-3 border-b-2">
         <span className="inline-block w-[50px] h-[50px]">
           <img
-            className="w-full  h-full object-cover rounded-full"
+            className="w-full  h-full max-w-[40px] max-h-[40px] object-cover rounded-full"
             src={user?.avatar ? user.avatar : "./undraw_profile.svg"}
             alt=""
           />

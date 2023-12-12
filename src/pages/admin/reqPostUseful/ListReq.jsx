@@ -48,7 +48,7 @@ const ListReq = () => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Yes",
       }).then(async (result) => {
         console.log(item);
         setLoadingBrowse(true);

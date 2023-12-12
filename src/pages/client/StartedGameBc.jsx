@@ -17,6 +17,18 @@ const StartedGameBc = ({ socket }) => {
   const [data, setData] = useState();
   const { coin } = useSelector((state) => state.user);
   const [chip, setChip] = useState(0);
+  const [totalChipDat, setTotalChipDat] = useState({
+    key_0:[],
+    key_1:[],
+    key_2:[],
+    key_3:[],
+    key_4:[],
+    key_5:[],
+
+  });
+
+  const [imageChip, setImageChip] = useState(0);
+
   const [bets, setBets] = useState({
     0: 0,
     1: 0,
@@ -205,7 +217,7 @@ const StartedGameBc = ({ socket }) => {
       };
 
       step();
-    }.call(this));
+    }).call(this);
   }, []);
   useEffect(() => {
     dispatch(handleFetchCoin());
@@ -514,14 +526,33 @@ const StartedGameBc = ({ socket }) => {
                         <div className="grid grid-cols-12 gap-3 ">
                           <div className="col-span-3 row-span-1 ">
                             <div
-                              onClick={() => datCuoc(0)}
-                              className="rounded-2xl hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white"
+                              onClick={() => {
+                                datCuoc(0);
+                                setTotalChipDat((totalChipDat) => {
+                                  return {
+                                    ...totalChipDat,
+                                    key_0: [...totalChipDat?.key_0, imageChip],
+                                  };
+                                });
+                              }}
+                              className="rounded-2xl relative hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white"
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
                                 src="https://lively-lamington-a39686.netlify.app/gourd.png"
                                 alt=""
                               />
+                              {totalChipDat?.key_0?.length > 0 &&
+                                totalChipDat?.key_0.map((item, index) => {
+                                  const class_new =  `left-[${index *10}px]`
+                                  return (
+                                    <img
+                                      src={item}
+                                      className={`absolute ${class_new} w-[50px] h-[50px]`}
+                                      alt=""
+                                    />
+                                  );
+                                })}
                             </div>
                           </div>
                           <div className="col-span-6 row-span-1 ">
@@ -535,62 +566,153 @@ const StartedGameBc = ({ socket }) => {
                           </div>
                           <div className="col-span-3 row-span-1">
                             <div
-                              onClick={() => datCuoc(1)}
-                              className="rounded-2xl hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white"
+                              onClick={() => {datCuoc(1)
+                                setTotalChipDat((totalChipDat) => {
+                                  return {
+                                    ...totalChipDat,
+                                    key_1: [...totalChipDat?.key_1, imageChip],
+                                  };
+                                });
+                              }}
+                              className="rounded-2xl relative hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white"
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
                                 src="https://lively-lamington-a39686.netlify.app/crab.png"
                                 alt=""
                               />
+                              {totalChipDat?.key_1?.length > 0 &&
+                                totalChipDat?.key_1.map((item, index) => {
+                                  const class_new =  `left-[${index *10}px]`
+                                  return (
+                                    <img
+                                      src={item}
+                                      className={`absolute ${class_new} w-[50px] h-[50px]`}
+                                      alt=""
+                                    />
+                                  );
+                                })}
                             </div>
                           </div>
                           <div className="col-span-3 row-span-1">
                             <div
-                              onClick={() => datCuoc(2)}
-                              className="rounded-2xl hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white"
+                              onClick={() => {datCuoc(2);
+                                setTotalChipDat((totalChipDat) => {
+                                  return {
+                                    ...totalChipDat,
+                                    key_2: [...totalChipDat?.key_2, imageChip],
+                                  };
+                                });
+                              }}
+                              className="rounded-2xl relative hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white"
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
                                 src="https://lively-lamington-a39686.netlify.app/crayfish.png"
                                 alt=""
                               />
+                               {totalChipDat?.key_2?.length > 0 &&
+                                totalChipDat?.key_2.map((item, index) => {
+                                  const class_new =  `left-[${index *10}px]`
+                                  return (
+                                    <img
+                                      src={item}
+                                      className={`absolute ${class_new} w-[50px] h-[50px]`}
+                                      alt=""
+                                    />
+                                  );
+                                })}
                             </div>
                           </div>
                           <div className="col-span-3 row-span-1">
                             <div
-                              onClick={() => datCuoc(3)}
-                              className="rounded-2xl hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white "
+                              onClick={() => {datCuoc(3)
+                                setTotalChipDat((totalChipDat) => {
+                                  return {
+                                    ...totalChipDat,
+                                    key_3: [...totalChipDat?.key_3, imageChip],
+                                  };
+                                });
+                              }}
+                              className="rounded-2xl relative hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white "
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
                                 src="https://lively-lamington-a39686.netlify.app/fish.png"
                                 alt=""
                               />
+                                                             {totalChipDat?.key_3?.length > 0 &&
+                                totalChipDat?.key_3.map((item, index) => {
+                                  const class_new =  `left-[${index *10}px]`
+                                  return (
+                                    <img
+                                      src={item}
+                                      className={`absolute ${class_new} w-[50px] h-[50px]`}
+                                      alt=""
+                                    />
+                                  );
+                                })}
                             </div>
                           </div>
                           <div className="col-span-3 row-span-1">
                             <div
-                              onClick={() => datCuoc(4)}
-                              className="rounded-2xl hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white"
+                              onClick={() => {datCuoc(4)
+                                setTotalChipDat((totalChipDat) => {
+                                  return {
+                                    ...totalChipDat,
+                                    key_4: [...totalChipDat?.key_4, imageChip],
+                                  };
+                                });
+                              }}
+                              className="rounded-2xl relative hover:bg-[rgba(0,0,0,0.5)] cursor-pointer p-3 flex justify-center items-center bg-white"
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
                                 src="https://lively-lamington-a39686.netlify.app/reindeer.png"
                                 alt=""
                               />
+                              {totalChipDat?.key_4?.length > 0 &&
+                                totalChipDat?.key_4.map((item, index) => {
+                                  const class_new =  `left-[${index *10}px]`
+                                  return (
+                                    <img
+                                      src={item}
+                                      className={`absolute ${class_new} w-[50px] h-[50px]`}
+                                      alt=""
+                                    />
+                                  );
+                                })}
                             </div>
                           </div>
                           <div className="col-span-3">
                             <div
-                              onClick={() => datCuoc(5)}
-                              className="rounded-2xl p-3 hover:bg-[rgba(0,0,0,0.5)] cursor-pointer flex justify-center items-center bg-white"
+                              onClick={() => {datCuoc(5)
+                              
+                                setTotalChipDat((totalChipDat) => {
+                                  return {
+                                    ...totalChipDat,
+                                    key_5: [...totalChipDat?.key_5, imageChip],
+                                  };
+                                });
+                              }}
+                              className="rounded-2xl relative p-3 hover:bg-[rgba(0,0,0,0.5)] cursor-pointer flex justify-center items-center bg-white"
                             >
                               <img
                                 className="w-[100px] h-[100px] object-cover"
                                 src="https://lively-lamington-a39686.netlify.app/rooster.png"
                                 alt=""
                               />
+                                {totalChipDat?.key_5?.length > 0 &&
+                                totalChipDat?.key_5.map((item, index) => {
+                                  const class_new =  `left-[${index *10}px]`
+                                  return (
+                                    <img
+                                      src={item}
+                                      className={`absolute ${class_new} w-[50px] h-[50px]`}
+                                      alt=""
+                                    />
+                                  );
+                                })}
                             </div>
                           </div>
                         </div>
@@ -670,7 +792,12 @@ const StartedGameBc = ({ socket }) => {
               </div>
               <div className="flex gap-5 items-center bg-white rounded-2xl py-1 px-3">
                 <span
-                  onClick={() => setChip(10)}
+                  onClick={() => {
+                    setChip(10);
+                    setImageChip(
+                      "https://lively-lamington-a39686.netlify.app/chip_10-removebg-preview.png"
+                    );
+                  }}
                   className={`${
                     chip === 10 ? "border-4 scale-110" : "border-2"
                   } rounded-full p-1 hover:scale-110 transition-all cursor-pointer flex justify-center items-center border-2 border-red-500`}
@@ -682,7 +809,12 @@ const StartedGameBc = ({ socket }) => {
                   />
                 </span>
                 <span
-                  onClick={() => setChip(50)}
+                  onClick={() => {
+                    setChip(50);
+                    setImageChip(
+                      "https://lively-lamington-a39686.netlify.app/chip_50-removebg-preview.png"
+                    );
+                  }}
                   className={`${
                     chip === 50 ? "border-4 scale-110" : "border-2"
                   } rounded-full p-1 hover:scale-110 transition-all cursor-pointer flex justify-center items-center border-2 border-red-500`}
@@ -694,7 +826,12 @@ const StartedGameBc = ({ socket }) => {
                   />
                 </span>
                 <span
-                  onClick={() => setChip(100)}
+                  onClick={() => {
+                    setChip(100);
+                    setImageChip(
+                      "https://lively-lamington-a39686.netlify.app/chip_100-removebg-preview.png"
+                    );
+                  }}
                   className={`${
                     chip === 100 ? "border-4 scale-110" : "border-2"
                   } rounded-full p-1 hover:scale-110 transition-all cursor-pointer flex justify-center items-center border-2 border-red-500`}
@@ -706,7 +843,12 @@ const StartedGameBc = ({ socket }) => {
                   />
                 </span>
                 <span
-                  onClick={() => setChip(500)}
+                  onClick={() => {
+                    setChip(500);
+                    setImageChip(
+                      "https://lively-lamington-a39686.netlify.app/chip_500-removebg-preview.png"
+                    );
+                  }}
                   className={`${
                     chip === 500 ? "border-4 scale-110" : "border-2"
                   } rounded-full p-1 hover:scale-110 transition-all cursor-pointer flex justify-center items-center border-2 border-red-500`}

@@ -26,7 +26,7 @@ const CreateRoomBauCua = ({ setShowCreateRoom }) => {
       setLoadingCreateRoom(true);
       const response = await axios({
         method: "POST",
-        url: "auth/baucua/createRoom",
+        url: "/auth/baucua/createRoom",
         data: data,
       });
       if (response.status == 200) {

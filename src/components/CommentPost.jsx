@@ -115,7 +115,7 @@ const CommentPost = ({
         >
           <p className="lg:w-[10%] w-[15%]">
             <img
-              className="w-full rounded-full object-cover"
+              className="w-full max-w-[40px] max-h-[40px] rounded-full object-cover"
               src={
                 comment?.user_data?.avatar
                   ? comment?.user_data?.avatar

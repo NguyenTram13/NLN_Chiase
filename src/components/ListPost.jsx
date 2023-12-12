@@ -332,7 +332,7 @@ const ListPost = ({ socket, id_user, q = "" }) => {
         }
         next={FetchPosts}
         endMessage={
-          <p style={{ textAlign: "center" }}>
+          <p className="mt-3" style={{ textAlign: "center" }}>
             <span className="px-3 py-2 bg-blue-400 rounded-full text-white">
               Yay! You have seen it all
             </span>
@@ -357,11 +357,11 @@ const ListPost = ({ socket, id_user, q = "" }) => {
             ></PostHome>
           ))}
       </InfiniteScroll>
-      {posts.length <= 0 && (
+      {/* {posts.length <= 0 && (
         <div className="p-3 text-red-500 shadow_main bg-white mt-3 rounded-xl">
           Chưa có bài viết
         </div>
-      )}
+      )} */}
     </div>
   );
 };

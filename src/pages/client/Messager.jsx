@@ -308,8 +308,10 @@ const Messager = ({ socket }) => {
                     // setCurrentChat={setCurrentChat}
                     conversation={cv}
                     arrivalMessage={arrivalMessage}
+                    setArrivalMessage={setArrivalMessage}
                     currentUser={user}
                     curentChat={curentChat}
+                    messages={messages}
                   ></ItemConversationCurrent>
                 ))}
             </div>

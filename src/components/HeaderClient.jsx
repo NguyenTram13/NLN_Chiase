@@ -179,7 +179,6 @@ export default function HeaderClient({
       >
         Profile
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
@@ -640,7 +639,7 @@ export default function HeaderClient({
                             >
                               <span className="block w-[10%]">
                                 <img
-                                  className="w-full block object-cover rounded-full"
+                                  className="w-full block rounded-full  max-w-[40px] max-h-[40px] object-cover"
                                   src={
                                     item?.avatar
                                       ? item?.avatar
@@ -669,7 +668,7 @@ export default function HeaderClient({
                           >
                             <span className="block w-[10%]">
                               <img
-                                className="w-full object-cover rounded-full"
+                                className="w-full max-w-[40px] max-h-[40px] object-cover rounded-full"
                                 src={
                                   item?.avatar
                                     ? item?.avatar

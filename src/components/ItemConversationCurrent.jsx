@@ -12,16 +12,15 @@ const ItemConversationCurrent = ({
   // setCurrentChat = ()=>{},
   arrivalMessage,
   curentChat,
+  setArrivalMessage,
+  messages
 }) => {
-  console.log(arrivalMessage);
   const [friend, setFriend] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [hightLight, setHightLight] = useState();
-  console.log(
-    conversation.message_data[conversation.message_data.length - 1]?.text
-  );
+  
   useEffect(() => {
     const friend_id = [conversation.user_one, conversation.user_second].find(
       (u) => u !== currentUser.id
@@ -44,7 +43,10 @@ const ItemConversationCurrent = ({
       }
     };
     getUser();
+    console.log("🚀 ~ file: ItemConversationCurrent.jsx:45 ~ useEffect ~ arrivalMessage:", arrivalMessage)
     setHightLight(arrivalMessage);
+  console.log("🚀 ~ file: ItemConversationCurrent.jsx:22 ~ hightLight:", hightLight)
+
   }, [conversation, currentUser, arrivalMessage]);
   if (!friend) <div>Loading</div>;
   return (
@@ -53,8 +55,10 @@ const ItemConversationCurrent = ({
 
         <div
           onClick={() => {
-            dispatch(setCurrentChat(conversation));
-            setHightLight(false);
+              dispatch(setCurrentChat(conversation));
+              setArrivalMessage(null)
+
+              setHightLight(false);
           }}
           className={`w-full rounded-lg grid grid-cols-12 gap-3 items-center p-2 hover:bg-gray-200 cursor-pointer transition-all ${
             friend.id == arrivalMessage?.sender && hightLight
@@ -78,7 +82,7 @@ const ItemConversationCurrent = ({
             {/* {friend.id == arrivalMessage?.sender && ( */}
             <p className="text-black m-0 flex">
               <span>
-                {conversation.message_data[conversation.message_data.length - 1]
+                {conversation.message_data[0]
                   ?.sender === currentUser?.id
                   ? "Bạn:  "
                   : ""}
@@ -87,15 +91,11 @@ const ItemConversationCurrent = ({
               <span>
                 {arrivalMessage?.text && arrivalMessage?.sender === friend?.id
                   ? arrivalMessage?.text
-                  : conversation.message_data[
-                      conversation.message_data.length - 1
-                    ]?.text
-                  ? conversation.message_data[
-                      conversation.message_data.length - 1
-                    ]?.text
+                  : messages[messages.length -1]?.text
+                  ? messages[messages.length -1]?.text
                   : ""}
               </span>
-              {hightLight && (
+              {friend.id == arrivalMessage?.sender && hightLight && (
                 <span className="w-[10px] h-[10px] rounded-full bg-blue-500 inline-block"></span>
               )}
             </p>

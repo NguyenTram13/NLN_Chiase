@@ -41,7 +41,7 @@ const UserOnline = ({ user: userF, suggest }) => {
     >
       <span className="relative">
         <img
-          className="w-[40px] rounded-full"
+          className="w-[40px] max-w-[40px] max-h-[40px] rounded-full"
           src={userF?.avatar ? userF.avatar : "./undraw_profile.svg"}
           alt=""
         />

@@ -209,7 +209,7 @@ const ContentLeft = ({ user, nofitycations }) => {
               >
                 <span className="block w-9 h-9">
                   <img
-                    className="w-full h-full block rounded-full"
+                    className="w-full h-full  block rounded-full"
                     src={noti?.avatar ? noti?.avatar : "./undraw_profile.svg"}
                     alt=""
                   />
@@ -234,7 +234,7 @@ const ContentLeft = ({ user, nofitycations }) => {
             >
               <span className="block w-[15%]">
                 <img
-                  className="w-full rounded-full"
+                  className="w-full rounded-full max-w-[40px] max-h-[40px] object-cover"
                   src={noti?.avatar ? noti?.avatar : "./undraw_profile.svg"}
                   alt=""
                 />
