@@ -401,7 +401,7 @@ const Status = ({ user }) => {
                   <div className="flex gap-3">
                     <span className="w-[45px] ">
                       <img
-                        className="rounded-full object-cover max-w-[40px] max-h-[40px]"
+                        className="rounded-full w-[40px] object-cover max-w-[40px] max-h-[40px]"
                         src={
                           user?.avatar ? user.avatar : "../undraw_profile.svg"
                         }

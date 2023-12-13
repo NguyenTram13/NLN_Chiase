@@ -1258,7 +1258,7 @@ const PostHome = ({
             <div className="flex gap-3 items-center">
               <span className=" relative md:w-[5%] lg:w-[5%] w-[10%]">
                 <img
-                  className="w-full max-w-[40px] rounded-full"
+                  className=" w-[30px] h-[30px] object-cover max-w-[30px] rounded-full"
                   src={
                     user?.avatar
                       ? user?.avatar

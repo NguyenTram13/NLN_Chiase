@@ -90,10 +90,11 @@ const ItemConversationCurrent = ({
 
               <span>
                 {arrivalMessage?.text && arrivalMessage?.sender === friend?.id
-                  ? arrivalMessage?.text
-                  : messages[messages.length -1]?.text
                   ? messages[messages.length -1]?.text
-                  : ""}
+                  : conversation.message_data[
+                    0
+                  ]?.text
+                 }
               </span>
               {friend.id == arrivalMessage?.sender && hightLight && (
                 <span className="w-[10px] h-[10px] rounded-full bg-blue-500 inline-block"></span>
