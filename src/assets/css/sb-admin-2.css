@@ -11316,19 +11316,19 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("../../public/panda.avif");
+  background: url("https://lively-lamington-a39686.netlify.app/panda.avif");
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
-  background: url("../../public/panda.avif");
+  background: url("https://lively-lamington-a39686.netlify.app/panda.avif");
   background-position: center;
   background-size: cover;
 }
 
 .bg-password-image {
-  background: url("../../public/panda.avif");
+  background: url("https://lively-lamington-a39686.netlify.app/panda.avif");
   background-position: center;
   background-size: cover;
 }
