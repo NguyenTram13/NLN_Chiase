@@ -104,7 +104,6 @@ const Status = ({ user }) => {
       }
     }
   );
-
   const [isShowEdit, setIsShowEdit] = useState(false);
   const handleSubImage = (e) => {
     e.preventDefault();
